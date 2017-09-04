@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KH-EN-DECTIONARY</string>
+    <string name="app_name">KH-EN-DICTIONARY</string>
     <string name="menu_dictionary">Dictionary</string>
     <string name="menu_recent">Recent</string>
     <string name="menu_favorite">Favorite</string>
