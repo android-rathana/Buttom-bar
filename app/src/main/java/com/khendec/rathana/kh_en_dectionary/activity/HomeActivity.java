@@ -7,8 +7,9 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 
 import com.khendec.rathana.kh_en_dectionary.R;
-import com.khendec.rathana.kh_en_dectionary.adapter.tab.HomePagerAdapter;
+import com.khendec.rathana.kh_en_dectionary.adapter.HomePagerAdapter;
 import com.khendec.rathana.kh_en_dectionary.base.BaseActivity;
+import com.khendec.rathana.kh_en_dectionary.callback.AdpaterCallBack;
 import com.khendec.rathana.kh_en_dectionary.fragment.tab.DictionaryFragment;
 
 import it.sephiroth.android.library.bottomnavigation.BottomNavigation;
@@ -16,7 +17,9 @@ import it.sephiroth.android.library.bottomnavigation.BottomNavigation;
 import static android.util.Log.INFO;
 import static it.sephiroth.android.library.bottomnavigation.MiscUtils.log;
 
-public class HomeActivity extends BaseActivity implements BottomNavigation.OnMenuItemSelectionListener{
+public class HomeActivity extends BaseActivity implements BottomNavigation.OnMenuItemSelectionListener,
+        AdpaterCallBack.RecentCallBack
+{
 
     static final String TAG = MainActivity.class.getSimpleName();
 
@@ -44,7 +47,6 @@ public class HomeActivity extends BaseActivity implements BottomNavigation.OnMen
                 @Override
                 public void onMenuChanged(BottomNavigation bottomNavigation) {
 
-                    Log.e("oooc",bottomNavigation.getSelectedIndex()+"");
                     homePagerAdapter=new HomePagerAdapter(getSupportFragmentManager(),bottomNavigation.getMenuItemCount());
                     viewPager.setAdapter(homePagerAdapter);
                     viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -84,5 +86,10 @@ public class HomeActivity extends BaseActivity implements BottomNavigation.OnMen
                 getViewPager().setCurrentItem(0);
             }
         }
+    }
+
+    @Override
+    public void onClickListener(int position) {
+        Log.e("ooo_click",position+"");
     }
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="word_card_view_left_margin">3dp</dimen>
+    <dimen name="word_card_view_right_margin">3dp</dimen>
+    <dimen name="word_card_view_top_margin">5dp</dimen>
+    <dimen name="word_card_view_bottom_margin">5dp</dimen>
+</resources>

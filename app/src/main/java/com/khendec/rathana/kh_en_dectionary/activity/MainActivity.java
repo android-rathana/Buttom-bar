@@ -6,12 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.khendec.rathana.kh_en_dectionary.R;
-import com.khendec.rathana.kh_en_dectionary.adapter.tab.TabPagerAdapter;
+import com.khendec.rathana.kh_en_dectionary.adapter.TabPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
-
 
     private TabPagerAdapter tabPagerAdapter;
 
@@ -27,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
         setUpBottomNavigation();
     }
-
 
 
     /*

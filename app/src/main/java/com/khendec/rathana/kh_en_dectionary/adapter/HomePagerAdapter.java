@@ -1,4 +1,4 @@
-package com.khendec.rathana.kh_en_dectionary.adapter.tab;
+package com.khendec.rathana.kh_en_dectionary.adapter;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -22,33 +22,14 @@ import java.util.List;
  * Created by ratha on 01-Sep-17.
  */
 
-public class TabPagerAdapter extends FragmentPagerAdapter {
+public class HomePagerAdapter extends FragmentPagerAdapter {
 
-    List<? extends Object> framgentList;
-
-
-    public final int PAGE_COUNT=3;
+    private int pageCount;
     private final String[] mTabTitle={"Dictionary","Recent","Favorite"};
-    private int[] mTabsIcon={
-            R.drawable.ic_dictionary,
-            R.drawable.ic_recent,
-            R.drawable.ic_favorite};
 
-    private Context context;
-
-    public TabPagerAdapter(FragmentManager fm, Context context) {
+    public HomePagerAdapter(FragmentManager fm,int pageCount) {
         super(fm);
-        this.context=context;
-        this.framgentList=new ArrayList<>();
-    }
-
-    public View getTabView(int position){
-        View view = LayoutInflater.from(context).inflate(R.layout.custom_tab,null);
-        TextView tvTittle= (TextView) view.findViewById(R.id.tab_title);
-        tvTittle.setText(mTabTitle[position]);
-        ImageView tabIcon = (ImageView) view.findViewById(R.id.tab_icon);
-        tabIcon.setImageResource(mTabsIcon[position]);
-        return view;
+        this.pageCount=pageCount;
     }
 
     @Override
@@ -57,13 +38,14 @@ public class TabPagerAdapter extends FragmentPagerAdapter {
             case 0: return new DictionaryFragment();
             case 1: return new RecentFragment();
             case 2: return new FavoriteFragment();
+            case 3: return new FavoriteFragment();
         }
         return null;
     }
 
     @Override
     public int getCount() {
-        return PAGE_COUNT;
+        return pageCount;
     }
 
     @Override

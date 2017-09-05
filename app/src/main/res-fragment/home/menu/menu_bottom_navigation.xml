@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/black"
-    app:bbn_badgeColor="#FFFF0000"
-    app:bbn_rippleColor="#33ffffff">
+    android:background="#ffffff"
+    app:bbn_itemColorActive="@color/bottom_nav_item_color_teal"
+    app:bbn_itemColorInactive="@color/bottom_nav_item_color_light_teal"
+    app:bbn_rippleColor="#ccBDBDBD">
     <item
         android:id="@+id/bbn_dictionary"
-        android:color="@color/colorPrimary"
         android:icon="@drawable/ic_book_white_24dp"
         android:title="Dictionary" />
     <item
         android:id="@+id/bbn_recent"
-        android:color="@color/colorPrimary"
         android:icon="@drawable/ic_recent_actors_white_24dp"
         android:title="Recent" />
     <item
         android:id="@+id/bbn_favorite"
-        android:color="@color/colorPrimary"
         android:icon="@drawable/ic_favorite_white_24dp"
         android:title="Favorite" />
 

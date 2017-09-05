@@ -35,7 +35,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BottomNa
          return viewPager;
     }
     public BottomNavigation getBottomNavigation(){
-        if(null == bottomNavigation){
+        if(null != bottomNavigation){
             bottomNavigation= (BottomNavigation) findViewById(R.id.home_bottom_nav_view);
         }
         return bottomNavigation;
