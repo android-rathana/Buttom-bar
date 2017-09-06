@@ -9,10 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.khendec.rathana.kh_en_dectionary.R;
-import com.khendec.rathana.kh_en_dectionary.callback.AdpaterCallBack;
 import com.khendec.rathana.kh_en_dectionary.entity.Word;
 import com.khendec.rathana.kh_en_dectionary.event.RecentFragmentEvent;
 
@@ -24,20 +22,17 @@ import java.util.List;
  * Created by ratha on 05-Sep-17.
  */
 
-public class RecentRecyclerViewAdapter extends RecyclerView.Adapter<RecentRecyclerViewAdapter.RecentViewHolder>
+public class FavoriteRecyclerViewAdapter extends RecyclerView.Adapter<FavoriteRecyclerViewAdapter.RecentViewHolder>
 {
-
     private List<Word> words;
     private ViewGroup viewGroup;
-    private static boolean saveFavoriteStatus=false;
     private Context context;
 
-    public RecentRecyclerViewAdapter(ViewGroup viewGroup, Context context, List words)
+    public FavoriteRecyclerViewAdapter(ViewGroup viewGroup, Context context, List words)
     {
         this.words=words;
         this.viewGroup=viewGroup;
         this.context=context;
-        //Log.e("uuuu-adapter",words.size()+"");
     }
 
     @Override
@@ -76,13 +71,6 @@ public class RecentRecyclerViewAdapter extends RecyclerView.Adapter<RecentRecycl
         return words.size();
     }
 
-    public static boolean isSaveFavoriteStatus() {
-        return saveFavoriteStatus;
-    }
-
-    public static void setSaveFavoriteStatus(boolean saveFavoriteStatus) {
-        RecentRecyclerViewAdapter.saveFavoriteStatus = saveFavoriteStatus;
-    }
 
     static class RecentViewHolder extends RecyclerView.ViewHolder{
         private TextView tvWord;

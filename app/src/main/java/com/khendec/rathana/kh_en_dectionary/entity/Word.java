@@ -9,6 +9,17 @@ public class Word {
     private String word;
     private String partOfSpeed;
 
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
+
+    private boolean isFavorite;
+
+
     public Word(int id, String word, String partOfSpeed) {
         this.id = id;
         this.word = word;

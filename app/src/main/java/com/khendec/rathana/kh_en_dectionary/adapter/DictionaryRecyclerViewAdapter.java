@@ -38,7 +38,6 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
     @Override
     public void onBindViewHolder(DictionaryViewHolder holder, int position) {
-        Log.e("ooooA",words.size()+"");
         if(words!=null){
             Word word =words.get(position);
             if(word!=null){

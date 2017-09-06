@@ -1,9 +1,11 @@
 package com.khendec.rathana.kh_en_dectionary.base;
 
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.khendec.rathana.kh_en_dectionary.R;
 
@@ -40,5 +42,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BottomNa
         }
         return bottomNavigation;
     }
+
 
 }
