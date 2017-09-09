@@ -4,6 +4,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.khendec.rathana.kh_en_dectionary.R;
 import com.khendec.rathana.kh_en_dectionary.adapter.TabPagerAdapter;
@@ -46,4 +48,10 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(0).getCustomView().setSelected(true);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.option_menu,menu);
+        return true;
+    }
 }

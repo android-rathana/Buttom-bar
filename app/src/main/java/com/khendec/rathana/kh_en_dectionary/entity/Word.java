@@ -8,25 +8,25 @@ public class Word {
     private int id;
     private String word;
     private String partOfSpeed;
-
-    public boolean isFavorite() {
-        return isFavorite;
-    }
-
-    public void setFavorite(boolean favorite) {
-        isFavorite = favorite;
-    }
-
     private boolean isFavorite;
 
-
+    public Word() {}
+    public Word(int id, String word, String partOfSpeed,boolean isFavorite){
+        this(id,word,partOfSpeed);
+        this.setFavorite(isFavorite);
+    }
     public Word(int id, String word, String partOfSpeed) {
         this.id = id;
         this.word = word;
         this.partOfSpeed = partOfSpeed;
     }
 
-    public Word() {}
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
 
     public Word(String word) {
         this.word = word;

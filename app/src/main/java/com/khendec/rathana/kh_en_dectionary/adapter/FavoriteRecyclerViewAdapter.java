@@ -7,11 +7,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.khendec.rathana.kh_en_dectionary.R;
 import com.khendec.rathana.kh_en_dectionary.entity.Word;
+import com.khendec.rathana.kh_en_dectionary.event.FavoritePopupMenuEvent;
 import com.khendec.rathana.kh_en_dectionary.event.RecentFragmentEvent;
 
 import org.greenrobot.eventbus.EventBus;
@@ -28,7 +30,7 @@ public class FavoriteRecyclerViewAdapter extends RecyclerView.Adapter<FavoriteRe
     private ViewGroup viewGroup;
     private Context context;
 
-    public FavoriteRecyclerViewAdapter(ViewGroup viewGroup, Context context, List words)
+    public FavoriteRecyclerViewAdapter(Context context,ViewGroup viewGroup , List words)
     {
         this.words=words;
         this.viewGroup=viewGroup;
@@ -37,7 +39,7 @@ public class FavoriteRecyclerViewAdapter extends RecyclerView.Adapter<FavoriteRe
 
     @Override
     public RecentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recent_card_view,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.favorite_card_view,parent,false);
         RecentViewHolder holder=new RecentViewHolder(view);
         return holder;
     }
@@ -46,19 +48,12 @@ public class FavoriteRecyclerViewAdapter extends RecyclerView.Adapter<FavoriteRe
     public void onBindViewHolder(RecentViewHolder holder, final int position) {
         Log.e("ooooA",words.size()+"");
         if(words!=null){
-            Word word =words.get(position);
-            if(word!=null){
-                if(word.getWord()!=null)  holder.tvWord.setText(word.getWord());
-                if(word.getPartOfSpeed()!=null) holder.tvPartOfSpeed.setText("."+ word.getPartOfSpeed());
-                if(!word.isFavorite()) {
-                    holder.btnFavorite.setImageResource(R.drawable.ic_favorite_border_light_thin_teal_disable_24dp);
-                }else{
-                    holder.btnFavorite.setImageResource(R.drawable.ic_favorite_border_light_thin_teal_24dp);
-                }
-                //event
-                holder.btnFavorite.setOnClickListener(view -> EventBus.getDefault().post(new RecentFragmentEvent(word,position)));
+            Word word=words.get(position);
+            if(null!=word.getWord()){
+                holder.tvWord.setText(word.getWord());
             }
 
+            holder.btnMenu.setOnClickListener(view-> EventBus.getDefault().post(new FavoritePopupMenuEvent(word)));
         }else{
             Snackbar snackbar = Snackbar.make(viewGroup, "No word found.", Snackbar.LENGTH_LONG);
             snackbar.show();
@@ -74,13 +69,11 @@ public class FavoriteRecyclerViewAdapter extends RecyclerView.Adapter<FavoriteRe
 
     static class RecentViewHolder extends RecyclerView.ViewHolder{
         private TextView tvWord;
-        private ImageView btnFavorite;
-        private TextView tvPartOfSpeed;
+        private ImageButton btnMenu;
         public RecentViewHolder(View itemView) {
             super(itemView);
-            tvWord= (TextView) itemView.findViewById(R.id.search_word);
-            tvPartOfSpeed= (TextView) itemView.findViewById(R.id.part_of_speed);
-            btnFavorite= (ImageView) itemView.findViewById(R.id.btn_recent_favorite);
+            tvWord= (TextView) itemView.findViewById(R.id.word_favorite);
+            btnMenu= (ImageButton) itemView.findViewById(R.id.btn_favorite_menu);
         }
     }
 

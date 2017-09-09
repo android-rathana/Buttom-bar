@@ -37,6 +37,11 @@ public class RecentFragment extends BaseFragment
     private RecentRecyclerViewAdapter recentRecyclerViewAdapter;
     private List<Word> words;
     private WordRepository wordRepo;
+    private String filter;
+    public RecentFragment(){}
+    public static RecentFragment getInstance(){
+        return new RecentFragment();
+    }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +53,7 @@ public class RecentFragment extends BaseFragment
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View rootView=inflater.inflate(R.layout.fragment_recent,container,false);
         recentRecyclerView= (RecyclerView) rootView.findViewById(R.id.recent_recycler_view);
-        inJetObjects(container);
+        injectObjects(container);
         return rootView;
     }
 
@@ -73,7 +78,7 @@ public class RecentFragment extends BaseFragment
         }
         recentRecyclerViewAdapter.notifyDataSetChanged();
     }
-    private void inJetObjects(ViewGroup viewGroup){
+    private void injectObjects(ViewGroup viewGroup){
         words=new ArrayList<>();
         wordRepo=MemoryRepositoy.INSTANCE.getInstance();
         recentRecyclerViewAdapter=new RecentRecyclerViewAdapter(viewGroup,getBaseAvtivity(),words);
@@ -87,14 +92,15 @@ public class RecentFragment extends BaseFragment
                 Word w = words.get(i);
                 if(word.isFavorite()){
                     w.setFavorite(false);
+                    wordRepo.update(word,w);
                 }else{
                     w.setFavorite(true);
+                    wordRepo.update(word,w);
                 }
                 recentRecyclerViewAdapter.notifyItemChanged(event.getItemPosition());
             }
         }
     }
-
     @Override
     public void onStart() {
         super.onStart();
@@ -105,5 +111,13 @@ public class RecentFragment extends BaseFragment
     public void onStop() {
         super.onStop();
         EventBus.getDefault().unregister(this);
+    }
+
+    public String getFilter() {
+        return filter;
+    }
+
+    public void setFilter(String filter) {
+        this.filter = filter;
     }
 }

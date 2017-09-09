@@ -16,7 +16,11 @@ public class WordRepository implements Repository<Word>{
 
     public WordRepository(){
         for(int i=0;i<10;i++){
-            words.add(new Word(i,"word" +i,"v"));
+            if(i%2==0){
+                words.add(new Word(i,"word" +i,"v",true));
+            }else {
+                words.add(new Word(i,"word" +i,"v"));
+            }
         }
     }
     @Override
@@ -61,5 +65,12 @@ public class WordRepository implements Repository<Word>{
             }
         }
         return false;
+    }
+    public List<Word> getWordByFavorite(){
+        List<Word> favWords=new ArrayList<>();
+        for (Word w : words){
+            if(w.isFavorite()) favWords.add(w);
+        }
+        return favWords;
     }
 }

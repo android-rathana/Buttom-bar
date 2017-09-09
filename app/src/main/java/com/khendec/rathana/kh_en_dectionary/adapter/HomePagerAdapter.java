@@ -26,21 +26,19 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
 
     private int pageCount;
     private final String[] mTabTitle={"Dictionary","Recent","Favorite"};
-
+    private List<Fragment> fragments;
     public HomePagerAdapter(FragmentManager fm,int pageCount) {
         super(fm);
         this.pageCount=pageCount;
+        fragments=new ArrayList<>();
     }
 
+    public void setFragment(Fragment fragment){
+        if (null !=fragment) fragments.add(fragment);
+    }
     @Override
     public Fragment getItem(int position) {
-        switch (position){
-            case 0: return new DictionaryFragment();
-            case 1: return new RecentFragment();
-            case 2: return new FavoriteFragment();
-            case 3: return new FavoriteFragment();
-        }
-        return null;
+        return fragments.get(position);
     }
 
     @Override

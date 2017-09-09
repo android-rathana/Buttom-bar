@@ -12,6 +12,7 @@
     <color name="darkGrayColor">#616161</color>
     <color name="bottom_navigation_item_background_colors">#FFFFFF</color>
     <color name="whitGreenColor">#F1F8E9</color>
+    <color name="whit_light_green_color">#E8F5E9</color>
     <color name="bottom_nav_item_color_teal">#00695C</color>
     <color name="bottom_nav_item_color_light_teal">#9900695C</color>
 
